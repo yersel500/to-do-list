@@ -1,3 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: red;
+  background-color: rgb(235, 235, 235);
+}
+
+li {
+  list-style-type: none;
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  border-top: 0.1rem solid rgb(214, 212, 212);
+}
+
+.container-general {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-list {
+  margin: 1rem 2rem;
+  width: 50%;
+  background-color: #fff;
+}
+
+.input-task,
+.delete-task,
+.title-container {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.dots {
+  margin-left: auto;
+}
+
+.fa-square {
+  margin-right: 0.2rem;
 }
