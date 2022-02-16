@@ -86,7 +86,7 @@ To get a local copy up and running follow these simple example steps.
 
 ## Live Demo
 
-[Live Demo Link](https://yersel500.github.io/to-do-list/)
+[Live Demo Link](https://yersel500.github.io/to-do-list/dist)
 
 ## Authors
 
