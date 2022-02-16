@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import './style.css';
+import '@fortawesome/fontawesome-free/js/all.js';
 
 function component() {
   const element = document.createElement('div');
