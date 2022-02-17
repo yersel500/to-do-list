@@ -8,6 +8,10 @@ body {
   background-color: rgb(235, 235, 235);
 }
 
+h1 {
+  text-align: center;
+}
+
 li {
   list-style-type: none;
   display: flex;
@@ -28,7 +32,7 @@ li {
   background-color: #fff;
 }
 
-.input-task,
+.task-input,
 .delete-task,
 .title-container {
   width: 100%;
@@ -37,6 +41,7 @@ li {
 
 .dots {
   margin-left: auto;
+  padding: 0.1rem 0.6rem;
 }
 
 .fa-square {
