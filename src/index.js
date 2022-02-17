@@ -21,7 +21,6 @@ const objTask = {
 function saveTask(e) {
   objTask[e.target.name] = e.target.value;
   objTask.complete = false;
-  console.log(e.target.value);
 }
 
 //class for array of objects
@@ -35,11 +34,11 @@ class ArrayTask {
   }
 
   editTask(updatedTask) {
-    this.tasks = this.tasks.map( task => task.index === updatedTask.index ? updatedTask: task);
+    this.tasks = this.tasks.map( task => task.index == updatedTask.index ? updatedTask: task);
   }
 
   deleteTask(index) {
-    this.tasks = this.task.filter( task => task.index !== index);
+    this.tasks = this.tasks.filter( task => task.index != index);
   }
 }
 
@@ -62,7 +61,7 @@ class UI {
       taskContainer.classList.add(`${index}`, 'list-unit', `${complete}`);
       taskContainer.innerHTML = `<i class="fa-regular fa-square"></i> ${description} <i class="fas fa-ellipsis-v dots"></i>`;
       ulContainer.appendChild(taskContainer);
-
+      taskContainer.onclick = (e) => eraseTask(e, index);
     });
     
 
@@ -80,8 +79,9 @@ function newTask(e) {
     if(complete) {
 
     } else {
-      objTask.index = listofTasks.length;
+      objTask.index = listofTasks.tasks.length + 1;
       listofTasks.addTask({...objTask});
+      console.log(listofTasks);
     }
 
     ui.printTask(listofTasks);
@@ -97,4 +97,15 @@ function resetObject() {
 }
 
 document.addEventListener('keypress', newTask);
+
+function eraseTask(e,index) {
+  console.log(e.target);
+  console.log(index);
+  if(e.target.classList.contains('fa-square')) {
+    listofTasks.deleteTask(index);
+    console.log(listofTasks);
+    ui.printTask(listofTasks);
+  }
+
+}
 
