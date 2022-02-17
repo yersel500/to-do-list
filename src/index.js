@@ -6,6 +6,8 @@ const ulContainer = document.querySelector('.list');
 // Input of tasks
 const taskInput = document.querySelector('.task-input');
 
+let edit = false;
+
 //Events
 eventListeners();
 function eventListeners() {
@@ -40,6 +42,10 @@ class ArrayTask {
   deleteTask(index) {
     this.tasks = this.tasks.filter( task => task.index != index);
   }
+
+  saveLocalStorage() {
+    localStorage.setItem('myTasks', JSON.stringify(this.tasks));
+  }
 }
 
 // class for UI
@@ -61,7 +67,7 @@ class UI {
       taskContainer.classList.add(`${index}`, 'list-unit', `${complete}`);
       taskContainer.innerHTML = `<i class="fa-regular fa-square"></i> ${description} <i class="fas fa-ellipsis-v dots"></i>`;
       ulContainer.appendChild(taskContainer);
-      taskContainer.onclick = (e) => eraseTask(e, index);
+      taskContainer.onclick = (e) => eraseTask(e, index, task);
     });
     
 
@@ -75,14 +81,18 @@ const listofTasks = new ArrayTask();
 
 function newTask(e) {
   const {description, complete} = objTask;
-  if (e.key == 'Enter' && description !== '') {
-    if(complete) {
 
+  if (e.key == 'Enter' && description !== '') {
+    if(edit) {
+      listofTasks.editTask({...objTask});
+      
+      edit = false;
     } else {
       objTask.index = listofTasks.tasks.length + 1;
       listofTasks.addTask({...objTask});
-      console.log(listofTasks);
     }
+
+    listofTasks.saveLocalStorage();
 
     ui.printTask(listofTasks);
 
@@ -98,12 +108,38 @@ function resetObject() {
 
 document.addEventListener('keypress', newTask);
 
-function eraseTask(e,index) {
-  console.log(e.target);
-  console.log(index);
+function eraseTask(e,index, task) {
   if(e.target.classList.contains('fa-square')) {
     listofTasks.deleteTask(index);
-    console.log(listofTasks);
+    ui.printTask(listofTasks);
+    listofTasks.saveLocalStorage();
+  } else if (e.target.classList.contains('dots')) {
+    enableEdition(task);
+    listofTasks.saveLocalStorage();
+  }
+}
+
+function enableEdition(task) {
+  const {description, complete, index} = task;
+
+  //Upload content to the object
+  objTask.description = description;
+  objTask.complete = complete;
+  objTask.index = index;
+
+
+
+  //Fill the input
+  taskInput.value = description;
+
+  edit = true;
+}
+
+// local storage
+
+window.onload = () => {
+  if(localStorage.getItem('myTasks')) {
+    listofTasks.tasks = JSON.parse(localStorage.getItem('myTasks'));
     ui.printTask(listofTasks);
   }
 
