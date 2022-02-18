@@ -48,7 +48,7 @@ export function printTask({ tasks }) {
 
     const taskContainer = document.createElement('li');
     taskContainer.classList.add(`${index}`, 'list-unit', `${complete}`);
-    taskContainer.innerHTML = `<i class="fa-regular ${DONE}"></i><input type='text' value = '${description}' class='specific-${index} ${LINE}' readonly><i class="fa-regular fa-trash-can"></i><i class="fas fa-ellipsis-v dots"></i>`;
+    taskContainer.innerHTML = `<i class="fa-regular ${DONE}"></i><input type='text' value = '${description}' class='specific-${index} ${LINE} today-task' readonly><i class="fa-regular fa-trash-can"></i><i class="fas fa-ellipsis-v dots"></i>`;
 
     ulContainer.appendChild(taskContainer);
     taskContainer.onclick = (e) => eraseTask(e, index, task, complete);

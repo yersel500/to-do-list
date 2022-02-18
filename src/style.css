@@ -39,9 +39,15 @@ li {
   padding: 0.5rem;
 }
 
-.dots {
+.dots,
+.fa-trash-can {
   margin-left: auto;
   padding: 0.1rem 0.6rem;
+}
+
+.today-task {
+  width: 85%;
+  padding: 0.2rem;
 }
 
 .fa-square,
