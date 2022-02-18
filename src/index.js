@@ -39,7 +39,7 @@ ulContainer.addEventListener('click', (e) => {
   }
 });
 
-btndeleteTask.addEventListener('click', (e) => {
+btndeleteTask.addEventListener('click', () => {
   listofTasks.deleteCompletedTask();
   printTask(listofTasks);
   listofTasks.saveLocalStorage();
