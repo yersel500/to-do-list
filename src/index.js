@@ -29,11 +29,11 @@ ulContainer.addEventListener('click', (e) => {
     printTask(listofTasks);
     listofTasks.saveLocalStorage();
   } else if (e.target.classList.contains('fa-square')) {
-    listofTasks.tasks[index-1].complete = true;
+    listofTasks.tasks[index - 1].complete = true;
     printTask(listofTasks);
     listofTasks.saveLocalStorage();
   } else if (e.target.classList.contains('fa-square-check')) {
-    listofTasks.tasks[index-1].complete = false;
+    listofTasks.tasks[index - 1].complete = false;
     printTask(listofTasks);
     listofTasks.saveLocalStorage();
   }
@@ -45,7 +45,7 @@ btndeleteTask.addEventListener('click', (e) => {
   listofTasks.deleteCompletedTask();
   printTask(listofTasks);
   listofTasks.saveLocalStorage();
-})
+});
 
 // local storage
 

@@ -2,9 +2,9 @@ import { ulContainer, taskInput } from './selectors';
 import ArrayTask from './class-methods';
 
 // constant variables
-const CHECK = "fa-square-check";
-const UNCHECK = "fa-square";
-const LINE_THROUGH = "lineThrough";
+const CHECK = 'fa-square-check';
+const UNCHECK = 'fa-square';
+const LINE_THROUGH = 'lineThrough';
 
 let edit = false;
 export const listofTasks = new ArrayTask();
@@ -44,7 +44,7 @@ export function printTask({ tasks }) {
     const { description, complete, index } = task;
 
     const DONE = complete ? CHECK : UNCHECK;
-    const LINE = complete ? LINE_THROUGH : "";
+    const LINE = complete ? LINE_THROUGH : '';
 
     const taskContainer = document.createElement('li');
     taskContainer.classList.add(`${index}`, 'list-unit', `${complete}`);

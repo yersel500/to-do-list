@@ -17,7 +17,7 @@ export default class ArrayTask {
   }
 
   deleteCompletedTask() {
-    this.tasks = this.tasks.filter((task, index) => task.complete == false);
+    this.tasks = this.tasks.filter((task) => task.complete === false);
   }
 
   saveLocalStorage() {
