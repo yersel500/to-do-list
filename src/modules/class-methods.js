@@ -16,6 +16,10 @@ export default class ArrayTask {
     this.tasks = this.tasks.filter((task) => task.index !== index);
   }
 
+  deleteCompletedTask() {
+    this.tasks = this.tasks.filter((task, index) => task.complete == false);
+  }
+
   saveLocalStorage() {
     localStorage.setItem('myTasks', JSON.stringify(this.tasks));
   }
