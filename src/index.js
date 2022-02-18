@@ -1,6 +1,6 @@
 import './style.css';
 import '@fortawesome/fontawesome-free/js/all.js';
-import { taskInput, ulContainer, btndeleteTask } from './modules/selectors';
+import { taskInput, ulContainer } from './modules/selectors';
 import {
   objTask, listofTasks, newTask, printTask,
 } from './modules/ui';
@@ -28,23 +28,8 @@ ulContainer.addEventListener('click', (e) => {
     listofTasks.deleteTask(index);
     printTask(listofTasks);
     listofTasks.saveLocalStorage();
-  } else if (e.target.classList.contains('fa-square')) {
-    listofTasks.tasks[index - 1].complete = true;
-    printTask(listofTasks);
-    listofTasks.saveLocalStorage();
-  } else if (e.target.classList.contains('fa-square-check')) {
-    listofTasks.tasks[index - 1].complete = false;
-    printTask(listofTasks);
-    listofTasks.saveLocalStorage();
   }
 });
-
-btndeleteTask.addEventListener('click', () => {
-  listofTasks.deleteCompletedTask();
-  printTask(listofTasks);
-  listofTasks.saveLocalStorage();
-});
-
 // local storage
 
 window.onload = () => {
