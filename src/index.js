@@ -1,6 +1,6 @@
 import './style.css';
 import '@fortawesome/fontawesome-free/js/all.js';
-import { taskInput, ulContainer } from './modules/selectors';
+import { taskInput, ulContainer, btndeleteTask } from './modules/selectors';
 import {
   objTask, listofTasks, newTask, printTask,
 } from './modules/ui';
@@ -38,8 +38,14 @@ ulContainer.addEventListener('click', (e) => {
     listofTasks.saveLocalStorage();
     }
 });
-// local storage
 
+btndeleteTask.addEventListener('click', () => {
+  listofTasks.deleteCompletedTask();
+  printTask(listofTasks);
+  listofTasks.saveLocalStorage();
+  });
+
+// local storage
 window.onload = () => {
   if (localStorage.getItem('myTasks')) {
     listofTasks.tasks = JSON.parse(localStorage.getItem('myTasks'));
