@@ -40,8 +40,6 @@ ulContainer.addEventListener('click', (e) => {
 });
 
 btndeleteTask.addEventListener('click', (e) => {
-  console.log(e.target);
-  console.log(typeof listofTasks.tasks[0]);
   listofTasks.deleteCompletedTask();
   printTask(listofTasks);
   listofTasks.saveLocalStorage();
