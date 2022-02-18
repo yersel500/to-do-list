@@ -44,6 +44,17 @@ li {
   padding: 0.1rem 0.6rem;
 }
 
-.fa-square {
-  margin-right: 0.2rem;
+.fa-square,
+.fa-trash-can,
+.fa-square-check {
+  margin-right: 0.3rem;
+}
+
+input {
+  border: none;
+}
+
+.lineThrough {
+  text-decoration: line-through;
+  color: #ccc;
 }

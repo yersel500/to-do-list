@@ -1,6 +1,11 @@
 import { ulContainer, taskInput } from './selectors';
 import ArrayTask from './class-methods';
 
+// constant variables
+const CHECK = "fa-square-check";
+const UNCHECK = "fa-square";
+const LINE_THROUGH = "lineThrough";
+
 let edit = false;
 export const listofTasks = new ArrayTask();
 // Empty object for task
@@ -24,7 +29,7 @@ export function enableEdition(task) {
 }
 
 export function eraseTask(e, index, task) {
-  if (e.target.classList.contains('dots')) {
+  if (e.target.classList.contains(`specific-${index}`)) {
     enableEdition(task);
     listofTasks.saveLocalStorage();
   }
@@ -38,11 +43,15 @@ export function printTask({ tasks }) {
   tasks.forEach((task) => {
     const { description, complete, index } = task;
 
+    const DONE = complete ? CHECK : UNCHECK;
+    const LINE = complete ? LINE_THROUGH : "";
+
     const taskContainer = document.createElement('li');
     taskContainer.classList.add(`${index}`, 'list-unit', `${complete}`);
-    taskContainer.innerHTML = `<i class="fa-regular fa-square"></i> ${description} <i class="fas fa-ellipsis-v dots"></i>`;
+    taskContainer.innerHTML = `<i class="fa-regular ${DONE}"></i><input type='text' value = '${description}' class='specific-${index} ${LINE}' readonly><i class="fa-regular fa-trash-can"></i><i class="fas fa-ellipsis-v dots"></i>`;
+
     ulContainer.appendChild(taskContainer);
-    taskContainer.onclick = (e) => eraseTask(e, index, task);
+    taskContainer.onclick = (e) => eraseTask(e, index, task, complete);
   });
 }
 

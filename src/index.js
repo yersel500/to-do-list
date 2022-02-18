@@ -23,9 +23,17 @@ document.addEventListener('keypress', newTask);
 
 // event on list container
 ulContainer.addEventListener('click', (e) => {
-  if (e.target.classList.contains('fa-square')) {
-    const index = Number(e.target.parentElement.classList[0]);
+  const index = Number(e.target.parentElement.classList[0]);
+  if (e.target.classList.contains('fa-trash-can')) {
     listofTasks.deleteTask(index);
+    printTask(listofTasks);
+    listofTasks.saveLocalStorage();
+  } else if (e.target.classList.contains('fa-square')) {
+    listofTasks.tasks[index-1].complete = true;
+    printTask(listofTasks);
+    listofTasks.saveLocalStorage();
+  } else if (e.target.classList.contains('fa-square-check')) {
+    listofTasks.tasks[index-1].complete = false;
     printTask(listofTasks);
     listofTasks.saveLocalStorage();
   }
