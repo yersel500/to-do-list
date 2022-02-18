@@ -32,18 +32,18 @@ ulContainer.addEventListener('click', (e) => {
     listofTasks.tasks[index - 1].complete = true;
     printTask(listofTasks);
     listofTasks.saveLocalStorage();
-    } else if (e.target.classList.contains('fa-square-check')) {
+  } else if (e.target.classList.contains('fa-square-check')) {
     listofTasks.tasks[index - 1].complete = false;
     printTask(listofTasks);
     listofTasks.saveLocalStorage();
-    }
+  }
 });
 
 btndeleteTask.addEventListener('click', () => {
   listofTasks.deleteCompletedTask();
   printTask(listofTasks);
   listofTasks.saveLocalStorage();
-  });
+});
 
 // local storage
 window.onload = () => {
