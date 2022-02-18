@@ -1,31 +1,40 @@
 import './style.css';
 import '@fortawesome/fontawesome-free/js/all.js';
+import { taskInput, ulContainer } from './modules/selectors';
+import {
+  objTask, listofTasks, newTask, printTask,
+} from './modules/ui';
 
-const ulContainer = document.querySelector('.list');
+function saveTask(e) {
+  objTask[e.target.name] = e.target.value;
+  objTask.complete = false;
+}
 
-const lisTasks = [
-  {
-    description: 'task 1',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'task 2',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'task 3',
-    completed: false,
-    index: 2,
-  },
-];
+// Events
+function eventListeners() {
+  taskInput.addEventListener('input', saveTask);
+}
+
+eventListeners();
+
+// Add task
+
+document.addEventListener('keypress', newTask);
+
+// event on list container
+ulContainer.addEventListener('click', (e) => {
+  const index = Number(e.target.parentElement.classList[0]);
+  if (e.target.classList.contains('fa-trash-can')) {
+    listofTasks.deleteTask(index);
+    printTask(listofTasks);
+    listofTasks.saveLocalStorage();
+  }
+});
+// local storage
 
 window.onload = () => {
-  lisTasks.forEach((task) => {
-    const taskContainer = document.createElement('li');
-    taskContainer.classList.add(`${task.index}`, 'list-unit');
-    taskContainer.innerHTML = `<i class="fa-regular fa-square"></i> ${task.description} <i class="fas fa-ellipsis-v dots"></i>`;
-    ulContainer.appendChild(taskContainer);
-  });
+  if (localStorage.getItem('myTasks')) {
+    listofTasks.tasks = JSON.parse(localStorage.getItem('myTasks'));
+    printTask(listofTasks);
+  }
 };

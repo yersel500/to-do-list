@@ -8,6 +8,10 @@ body {
   background-color: rgb(235, 235, 235);
 }
 
+h1 {
+  text-align: center;
+}
+
 li {
   list-style-type: none;
   display: flex;
@@ -28,17 +32,35 @@ li {
   background-color: #fff;
 }
 
-.input-task,
+.task-input,
 .delete-task,
 .title-container {
   width: 100%;
   padding: 0.5rem;
 }
 
-.dots {
+.dots,
+.fa-trash-can {
   margin-left: auto;
+  padding: 0.1rem 0.6rem;
 }
 
-.fa-square {
-  margin-right: 0.2rem;
+.today-task {
+  width: 85%;
+  padding: 0.2rem;
+}
+
+.fa-square,
+.fa-trash-can,
+.fa-square-check {
+  margin-right: 0.3rem;
+}
+
+input {
+  border: none;
+}
+
+.lineThrough {
+  text-decoration: line-through;
+  color: #ccc;
 }
