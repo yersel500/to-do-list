@@ -4,6 +4,10 @@
 
 > Solo programming project for module 2 week 2 of the Microverse Program.
 
+## Live Demo
+
+[Live Demo Link](https://yersel500.github.io/to-do-list/dist)
+
 ![Desktop Version](https://image.prntscr.com/image/-Q5uLtyzSy-NR1zYpAy2nA.png)
 ![Mobile Version](https://image.prntscr.com/image/6LxVt0m8TzeeZgwKlktsyg.png)
 
@@ -83,10 +87,6 @@ To get a local copy up and running follow these simple example steps.
 - Javascript
 - Webpack
 - Love
-
-## Live Demo
-
-[Live Demo Link](https://yersel500.github.io/to-do-list/dist)
 
 ## Authors
 
